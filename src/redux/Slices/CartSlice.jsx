@@ -1,18 +1,45 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const CartSlice = createSlice({
+const CartSlice = createSlice({
   name: "cart",
-  initialState: [],
-
+  initialState: {
+    movie: [],
+    y: {},
+  },
   reducers: {
     add: (state, action) => {
-      state.push(action.payload);
+      state.movie.push(action.payload);
     },
     remove: (state, action) => {
-      return state.filter((item) => item.id !== action.payload);
+      state.movie = state.movie.filter((item) => item.id !== action.payload);
+    },
+    play: (state, action) => {
+      state.y = action.payload;
     },
   },
 });
 
-export const { add, remove } = CartSlice.actions;
-export default CartSlice.reducer;
+export const { add, remove, play } = CartSlice.actions;
+
+const PostSlice = createSlice({
+  name: "POST",
+  initialState: {
+    homemovies: [],
+  },
+  reducers: {
+    addhomemovies: (state, action) => {
+      console.log(action.payload);
+      return {
+        ...state,
+        homemovies: action.payload,
+      };
+
+      
+    },
+  },
+});
+
+export const { addhomemovies } = PostSlice.actions;
+
+export const cart = CartSlice.reducer;
+export const POST = PostSlice.reducer;

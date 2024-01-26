@@ -5,7 +5,7 @@ import { CartItems } from "../components/CartItems";
 
 
 export const Cart = () => {
-  const { cart } = useSelector((state) => state.cart.cartar);
+  const cart  = useSelector((state) => state.cart.movie);
 
   const [totalAmount ,setTotalAmount]=useState(0);
 
@@ -16,46 +16,30 @@ export const Cart = () => {
   return (
 
   
-   <div >
-     <div className="flex felx-col ">
+   <div  className=" ">
+     <div className="flex h-screen felx-col ">
       {cart.length > 0 ? (
        
           <div className=" w-full h-[88vh] flex flex-col justify-between">
 
-            <div className="flex ">
+            <div className="flex flex-wrap">
             {cart.map((item, index) => {
               return <CartItems key={item.id} item={item} itemindex={index} />;
             })}
           </div>
 
           
-          <div className="flex flex-col   bg-slate-500 p-5 ">
-            <div className="">
-              <div className=" uppercase font-serif text-lg">your Cart</div>
-              <div className=" uppercase font-serif text-lg">Summary</div>
-              <p>
-                <span className=" uppercase font-serif text-lg">total Items : <span className=" text-green-200"> {cart.length}</span> </span>
-              </p>
-            </div>
-            <div>
-               <p className=" uppercase font-serif text-lg">total Amount : <span className=" text-green-200">${totalAmount}</span></p>
-            </div>
           
-
-               <div className="flex justify-center bg-amber-600  items-center  mx-96 rounded-lg p-3 ml-[500px]  hover:bg-amber-500 duration-300 animate-pulse ani">
-               <button>CheckOut Now</button>
-               </div>
-            
-          </div>
           </div>
           
         
       ) : (
-        <div>
+        <div className=" mx-auto my-auto bg-gradient-to-r from-zinc-700 to-zinc-600 bg-clip-text text-transparent font-serif font-medium ">
           <p>Cart is Empty</p>
 
           <NavLink to="/">
-            <button>Shop Now</button>
+          <button type="button" className="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-8 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 me-2 mb-2 mt-3 ">
+              Add Now</button>
           </NavLink>
         </div>
       )}

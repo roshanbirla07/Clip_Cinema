@@ -1,31 +1,54 @@
 import React from "react";
-import { GiShoppingCart } from "react-icons/gi";
-import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
 
+import { useSelector } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
+import { Genredropdownmenu } from "./Genresection/Genredropdownmenu";
+import { PiHeartLight } from "react-icons/pi";
 export const Navbar = () => {
-  const { cart } = useSelector((state) => state);
+
+
+  const navigate=useNavigate()
+  const  cart  = useSelector((state) => state.cart.movie);
   return (
     <div>
-      <div className=" flex justify-between items-center h-20 max-w-6xl mx-auto">
+      <div className=" flex justify-between items-center h-20 p-2 max-w-6xl mx-auto">
         <NavLink to="/">
           <div className="ml-5">
             <img
-              src="https://png.pngtree.com/png-clipart/20200701/original/pngtree-shopping-mall-logo-png-image_5406131.jpg"
+              src="https://w7.pngwing.com/pngs/725/684/png-transparent-movie-time-graphic-film-cinema-logo-film-elements-cdr-food-text.png"
               alt=""
-              className="w-[30px]"
+              className="w-[70px] rounded-xl"
             />
           </div>
         </NavLink>
 
         <div className="flex gap-3 items-center justify-center font-medium text-slate-100 mr-5 space-x-6">
+         
           <NavLink to="/">
-            <p>Home</p>
+            <p className="bg-gradient-to-r from-zinc-700 to-zinc-600 bg-clip-text text-transparent">WEB-SERIES</p>
           </NavLink>
+         
+          <NavLink to={
+              {pathname :"/Genre"}}state={{id: 16}}>
+            <p className="bg-gradient-to-r from-zinc-700 to-zinc-600 bg-clip-text text-transparent"
+            >ANIME</p>
+          </NavLink>
+          <NavLink to="/">
+            <p className="bg-gradient-to-r from-zinc-700 to-zinc-600 bg-clip-text text-transparent">MOVIES</p>
+          </NavLink>
+          <NavLink to="/">
+            <p className="bg-gradient-to-r from-zinc-700 to-zinc-600 bg-clip-text text-transparent">TV SHOW</p>
+          </NavLink>
+       
+          <NavLink >
+            <p><Genredropdownmenu/></p>
+          </NavLink>
+
+
 
           <NavLink to="/cart">
             <div className="relative">
-              <GiShoppingCart className="text-2xl" />
+               <PiHeartLight  className="text-2xl" />
 
               { cart && cart.length > 0 && (
                 <span className="absolute -top-1 -right-2 bg-green-600 text-xs w-5 h-5 flex justify-center items-center animate-bounce  rounded-full text-white">

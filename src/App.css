@@ -25,6 +25,7 @@
 .custom-loader {
 
   margin: auto;
+  align-items: center;
   --d:22px;
   width: 4px;
   height: 4px;
@@ -43,4 +44,8 @@
 
 @keyframes s7 {
   100% {transform: rotate(1turn)}
+}
+
+.text{
+  
 }
